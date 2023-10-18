@@ -1,0 +1,92 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "coconutcraig/laravel-postmark": "^3.0",
+        "filament/filament": "^2.0",
+        "filament/spatie-laravel-media-library-plugin": "*",
+        "guzzlehttp/guzzle": "^7.2",
+        "koalafacade/diamond-console": "^2.5",
+        "laravel/framework": "^10.0",
+        "laravel/sanctum": "^3.2",
+        "laravel/tinker": "^2.8",
+        "leandrocfe/filament-apex-charts": "^1.0",
+        "phpoffice/phpword": "^1.1",
+        "phpsa/filament-password-reveal": "^1.1",
+        "reworck/filament-settings": "^0.3.0",
+        "saade/filament-fullcalendar": "^1.7",
+        "simplesoftwareio/simple-qrcode": "^4.2",
+        "spatie/laravel-activitylog": "^4.7",
+        "spatie/laravel-permission": "^5.9",
+        "yepsua/filament-rating-field": "^0.1.1"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^3.6",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.6",
+        "laravel/sail": "^1.18",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "6.1",
+        "nunomaduro/larastan": "2.4",
+        "pestphp/pest": "^1.22",
+        "pestphp/pest-plugin-laravel": "^1.4",
+        "phpunit/phpunit": "9.6",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Infrastructure\\": "src/Infrastructure/",
+            "Domain\\": "src/Domain/",
+            "app\\": "src/app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan filament:upgrade"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "10.x-dev"
+        },
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
